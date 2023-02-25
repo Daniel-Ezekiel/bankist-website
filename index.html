@@ -19,20 +19,20 @@
 <body>
   <header>
     <nav class="navbar">
-      <img src="./assets/logo.png" alt="bankist-logo" class="header--logo">
+      <img src="./assets/logo.png" alt="bankist-logo" class="header__logo">
 
-      <ul class="header--links">
+      <ul class="header__links">
         <li>
-          <a href="#" class="navbar--link">Features</a>
+          <a href="#" class="navbar__link">Features</a>
         </li>
         <li>
-          <a href="#" class="navbar--link">Operations</a>
+          <a href="#" class="navbar__link">Operations</a>
         </li>
         <li>
-          <a href="#" class="navbar--link">Testimonials</a>
+          <a href="#" class="navbar__link">Testimonials</a>
         </li>
         <li>
-          <a href="#" class="navbar--link btn--open-account">Open Account</a>
+          <a href="#" class="navbar__link btn--open-account">Open Account</a>
         </li>
       </ul>
     </nav>
@@ -40,23 +40,76 @@
 
   <main>
     <section class="hero">
-      <div class="hero--text-contents">
-        <h1 class="hero--title">When banking meets minimalist</h1>
-        <p class="hero--tagline">A simpler banking experience for a simpler life</p>
-        <a href="#" class="hero--learn-more">Learn more</a>
+      <div class="hero__text-contents">
+        <h1 class="hero__title">When banking meets minimalist</h1>
+        <p class="hero__tagline">A simpler banking experience for a simpler life</p>
+        <a href="#" class="hero__learn-more">Learn more</a>
       </div>
 
-      <div class="hero--image-control">
-        <img src="./assets/hero.png" alt="hero-image" class="hero--image">
+      <div class="hero__image-control">
+        <img src="./assets/hero.png" alt="hero-image" class="hero__image">
       </div>
     </section>
 
-    <section class="features">
-      <div class="section--intro">
-        <span class="section--name">Features</span>
-        <h2 class="section--heading">
+    <section id="section--1" class="section">
+      <div class="section__intro">
+        <span class="section__name">Features</span>
+        <h2 class="section__heading">
           Everything you need in a modern bank and more
         </h2>
+      </div>
+
+      <div class="feature">
+        <img src="./assets/digital.jpg" alt="computer" class="feature__image">
+
+        <div class="feature__details">
+          <svg>
+            <use xlink:href="./assets/icons.svg#icon-monitor"></use>
+          </svg>
+          <h3 class="feature__heading">
+            100% digital bank
+          </h3>
+          <p class="feature__description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eligendi reiciendis ratione mollitia
+            aliquam ab ipsa neque soluta, debitis et!
+          </p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <img src="./assets/grow.jpg" alt="plant" class="feature__image">
+
+        <div class="feature__details">
+          <svg>
+            <use xlink:href="./assets/icons.svg#icon-trending-up"></use>
+          </svg>
+          <h3 class="feature__heading">
+            Watch your money grow
+          </h3>
+          <p class="feature__description">
+            Quasi, fugit in cumque cupiditate reprehenderit debitis animi enim
+            eveniet consequatur odit quam quos possimus assumenda dicta fuga
+            inventore ab.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <img src="./assets/card.jpg" alt="card" class="feature__image">
+
+        <div class="feature__details">
+          <svg>
+            <use xlink:href="./assets/icons.svg#icon-credit-card"></use>
+          </svg>
+          <h3 class="feature__heading">
+            Free debit card included
+          </h3>
+          <p class="feature__description">
+            Nesciunt quos autem dolorum voluptates cum dolores dicta fuga
+            inventore ab? Nulla incidunt eius numquam sequi iste pariatur
+            quibusdam!
+          </p>
+        </div>
       </div>
     </section>
   </main>

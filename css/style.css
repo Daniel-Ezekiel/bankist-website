@@ -155,6 +155,28 @@ header {
   font-size: 3.5rem;
 }
 
+.hero__text-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title__highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.title__highlight::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0.2rem;
+  transform: skewX(10deg);
+  background: var(--gradient-primary);
+  z-index: -1;
+}
+
 .hero__tagline {
   font-size: 2rem;
   font-weight: 500;
@@ -162,6 +184,7 @@ header {
 
 .hero__learn-more {
   display: inline-block;
+  width: max-content;
   margin-top: 1.5rem;
   padding-bottom: 0.3rem;
   border-bottom: 0.1rem solid #ffb003;

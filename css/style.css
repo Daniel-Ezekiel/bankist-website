@@ -565,7 +565,7 @@ footer {
   .hero {
     max-width: 110rem;
     margin: auto;
-    padding: 8rem 3rem;
+    padding: 12rem 3rem 8rem;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -667,6 +667,10 @@ footer {
 }
 
 @media screen and (min-width: 1280px) {
+  .hero {
+    padding: 0;
+  }
+
   .feature {
     max-width: 125rem;
   }

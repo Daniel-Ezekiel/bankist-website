@@ -6,14 +6,14 @@
 
 :root {
   --primary-color: #ffcb03;
-  --primary-dark-color: #ffb003;
+  --primary-dark-color: #50c9c3;
   --primary-bg-color: #f3f3f3;
   --secondary-bg-color: #37383d;
   --bg-green: #5ec576;
   --bg-red: #ff585f;
   --primary-text-color: #444;
   --secondary-text-color: #666;
-  --gradient-primary: linear-gradient(to top left, #ffb003, #ffcb03);
+  --gradient-primary: linear-gradient(to top left, #96deda, #50c9c3);
 }
 
 html {
@@ -196,7 +196,7 @@ header {
   display: inline-block;
   width: max-content;
   padding-bottom: 0.3rem;
-  border-bottom: 0.1rem solid #ffb003;
+  border-bottom: 0.1rem solid #50c9c3;
 
   font-size: 1.6rem;
   text-decoration: none;
@@ -252,7 +252,7 @@ main section {
   padding: 1rem;
   width: 4rem;
   height: 4rem;
-  background-color: rgba(255, 176, 3, 0.2);
+  background-color: rgba(80, 201, 195, 0.2);
   border-radius: 50%;
 
   display: flex;
@@ -498,7 +498,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .footer--nav {
@@ -526,6 +526,22 @@ footer {
 .footer__logo {
   width: 5rem;
   height: auto;
+}
+
+.site__info {
+  color: #fff;
+  font-weight: 300;
+}
+
+.developer--name {
+  color: var(--primary-dark-color);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.developer--name:hover {
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {

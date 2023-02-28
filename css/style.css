@@ -26,7 +26,7 @@ body {
   background-color: var(--primary-bg-color);
 
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--primary-text-color);
 }
@@ -207,6 +207,7 @@ header {
 }
 
 .hero__image {
+  width: 100%;
   max-width: 45rem;
 }
 
@@ -236,6 +237,7 @@ main section {
 
 .feature__image {
   border-radius: 1.8rem;
+  width: 100%;
 }
 
 .feature__details {
@@ -345,8 +347,110 @@ main section {
   font-weight: 300;
 }
 
-img {
-  width: 100%;
+/* SECTION 3 - TESTIMONIALS */
+.carousel {
+  margin-top: 3.5rem;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.testimonial {
+  min-width: 100%;
+  padding: 3.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.testimonial::before {
+  position: absolute;
+  content: '\201C';
+  top: -6rem;
+  left: -0.5rem;
+  font-size: 18rem;
+  font-family: inherit;
+  color: var(--primary-dark-color);
+  z-index: -1;
+}
+
+.testimonial__heading {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.testimonial__details {
+  font-weight: 300;
+}
+
+.testimonial__author {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.author__image {
+  grid-row: 1 / span 2;
+  width: 6.5rem;
+  height: auto;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.author__name {
+  font-size: 1.8rem;
+  align-self: end;
+}
+
+.author__location {
+  font-weight: 300;
+  align-self: start;
+}
+
+.btn__slider {
+  position: absolute;
+  transform: translateY(-6rem);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background-color: #fff;
+
+  font-size: 2rem;
+}
+
+#btn__right {
+  top: 50%;
+  right: 0;
+}
+
+#btn__left {
+  top: 50%;
+  left: 0;
+}
+
+.carousel__pagination {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.btn--pagination {
+  margin-right: 1rem;
+  background-color: #aaa;
+  border: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.btn--pagination.active {
+  background-color: #666;
 }
 
 @media screen and (min-width: 768px) {

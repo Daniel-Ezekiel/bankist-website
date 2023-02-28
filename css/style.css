@@ -474,7 +474,7 @@ footer {
 }
 
 .cta--title {
-  font-size: clamp(2.4rem, 5vh, 3.5rem);
+  font-size: clamp(2.4rem, 4vh, 3.5rem);
   font-weight: 500;
   text-align: center;
   color: #fff;
@@ -489,6 +489,43 @@ footer {
 #section--4 > a:hover {
   transform: scale(1.05);
   transition: all 0.6s;
+}
+
+/* FOOTER */
+footer {
+  padding: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footer--nav {
+  padding: 2rem;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer__link {
+  font-weight: 300;
+}
+
+.footer__link > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__link > a:hover {
+  text-decoration: underline;
+}
+
+.footer__logo {
+  width: 5rem;
+  height: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -585,6 +622,10 @@ footer {
 
   .cta--title {
     width: 75rem;
+  }
+
+  .footer--nav {
+    gap: 2.5rem;
   }
 }
 

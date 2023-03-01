@@ -19,6 +19,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -459,7 +460,7 @@ main section {
 }
 
 /* SECTION 4 - CTA */
-#section--4 {
+#cta {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -468,7 +469,7 @@ main section {
   border-bottom: 0.1rem solid #444;
 }
 
-#section--4,
+#cta,
 footer {
   background-color: var(--secondary-bg-color);
 }
@@ -480,13 +481,13 @@ footer {
   color: #fff;
 }
 
-#section--4 > a {
+#cta > a {
   font-size: clamp(1.5rem, 3vh, 1.8rem);
   color: var(--primary-text-color);
   text-decoration: none;
 }
 
-#section--4 > a:hover {
+#cta > a:hover {
   transform: scale(1.05);
   transition: all 0.6s;
 }

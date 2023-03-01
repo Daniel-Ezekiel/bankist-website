@@ -303,8 +303,10 @@ main section {
   transform: translateY(-55%);
 
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.3rem;
 }
 
 .btn__operation.active {
@@ -484,6 +486,7 @@ footer {
 #cta > a {
   font-size: clamp(1.5rem, 3vh, 1.8rem);
   color: var(--primary-text-color);
+  text-align: center;
   text-decoration: none;
 }
 

@@ -32,3 +32,38 @@ btnModalClose.addEventListener('click', e => {
   overlay.classList.remove('active');
   form.classList.remove('active');
 });
+
+// SMOOTH SCROLLING FUNCTIONALITY
+const scrollToSection = function (sectionName) {
+  const sCoords = sectionName.getBoundingClientRect();
+  const pgXOffset = window.scrollX;
+  const pgYOffset = window.scrollY;
+
+  window.scrollTo({
+    left: pgXOffset + sCoords.left,
+    top: pgYOffset + sCoords.top,
+    behavior: 'smooth',
+  });
+  // sectionName.scrollIntoView({ behavior: 'smooth' }); -- For modern browsers
+  // console.log(window.pageXOffset, window.pageYOffset); -- pageXOffset, pageYOffset is deprecated
+};
+
+const navLinks = document.querySelectorAll('.navbar__link');
+navLinks.forEach(link =>
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const linkText = e.target.textContent.toLowerCase();
+    console.log(linkText);
+    const section = document.querySelector(`#${linkText}`);
+
+    scrollToSection(section);
+  })
+);
+
+const btnLearnMore = document.querySelector('.btn__learn-more');
+btnLearnMore.addEventListener('click', function (e) {
+  e.preventDefault();
+  const section = document.querySelector('#features');
+
+  scrollToSection(section);
+});

@@ -192,7 +192,7 @@ header {
   font-weight: 500;
 }
 
-.hero__learn-more {
+.btn__learn-more {
   display: inline-block;
   width: max-content;
   padding-bottom: 0.3rem;

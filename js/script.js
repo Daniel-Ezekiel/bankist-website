@@ -8,13 +8,18 @@ hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
   mobileNav.classList.toggle('active');
 });
+mobileNav.addEventListener('click', function () {
+  hamburger.classList.remove('active');
+  mobileNav.classList.remove('active');
+});
 
-// ACCOUNT MODAL POPUP
+// ACCOUNT MODAL ELEMENTS
 const btnOpenAcc = document.querySelectorAll('.btn--open-account');
 const overlay = document.querySelector('.overlay');
 const form = document.querySelector('.form--open-account');
 const btnModalClose = document.querySelector('.overlay--close');
 
+// ACCOUNT MODAL POPUP
 btnOpenAcc.forEach(btn =>
   btn.addEventListener('click', e => {
     e.preventDefault();
@@ -22,7 +27,6 @@ btnOpenAcc.forEach(btn =>
     form.classList.add('active');
   })
 );
-
 btnModalClose.addEventListener('click', e => {
   e.preventDefault();
   overlay.classList.remove('active');

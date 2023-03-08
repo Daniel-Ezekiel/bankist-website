@@ -71,7 +71,8 @@ header {
   transition: all 1s;
 }
 
-.navbar__link {
+.navbar__link,
+.btn--open-account {
   font-size: 1.6rem;
   font-weight: 400;
   text-decoration: none;
@@ -84,7 +85,8 @@ header {
   background: var(--gradient-primary);
 }
 
-.navbar__link:hover {
+.navbar__link:hover,
+.btn--open-account:hover {
   text-decoration: underline;
 }
 

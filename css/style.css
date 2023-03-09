@@ -326,7 +326,7 @@ main section {
 }
 
 #btn__loan {
-  background-color: var(--bg-green);
+  background-color: var(--primary-dark-color);
 }
 
 #btn__close {
@@ -342,6 +342,22 @@ main section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.operation__transfer-details .icon--control {
+  background-color: rgba(255, 203, 3, 0.2);
+}
+
+.operation__transfer-details svg {
+  fill: #ffcb03;
+}
+
+.operation__close-details .icon--control {
+  background-color: rgba(255, 88, 95, 0.2);
+}
+
+.operation__close-details svg {
+  fill: #ff585f;
 }
 
 .operation__heading {

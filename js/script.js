@@ -79,3 +79,22 @@ btnLearnMore.addEventListener('click', function (e) {
 
   scrollToSection(sectionID);
 });
+
+// BUILDING A TABBED COMPONENT
+const operationControls = document.querySelector('.operations__controls');
+const operationsDetails = document.querySelectorAll('.operation__details');
+
+operationControls.addEventListener('click', function (e) {
+  e.preventDefault();
+  const btnsOperation = operationControls.querySelectorAll('.btn__operation');
+  // console.log(btnsOperation);
+
+  if (e.target.classList.contains('btn__operation')) {
+    btnsOperation.forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+
+    operationsDetails.forEach(detail => detail.classList.remove('active'));
+    const operationDetailClassName = e.target.getAttribute('for');
+    document.querySelector(operationDetailClassName).classList.add('active');
+  }
+});

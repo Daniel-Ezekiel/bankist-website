@@ -82,19 +82,17 @@ btnLearnMore.addEventListener('click', function (e) {
 
 // BUILDING A TABBED COMPONENT
 const operationControls = document.querySelector('.operations__controls');
+const btnsOperation = operationControls.querySelectorAll('.btn__operation');
 const operationsDetails = document.querySelectorAll('.operation__details');
 
 operationControls.addEventListener('click', function (e) {
   e.preventDefault();
-  const btnsOperation = operationControls.querySelectorAll('.btn__operation');
-  // console.log(btnsOperation);
+  const clicked = e.target.closest('.btn__operation');
+  // console.log(clicked);
+  btnsOperation.forEach(btn => btn.classList.remove('active'));
+  clicked.classList.add('active');
 
-  if (e.target.classList.contains('btn__operation')) {
-    btnsOperation.forEach(btn => btn.classList.remove('active'));
-    e.target.classList.add('active');
-
-    operationsDetails.forEach(detail => detail.classList.remove('active'));
-    const operationDetailClassName = e.target.getAttribute('for');
-    document.querySelector(operationDetailClassName).classList.add('active');
-  }
+  operationsDetails.forEach(detail => detail.classList.remove('active'));
+  const currTabClassName = clicked.getAttribute('for');
+  document.querySelector(currTabClassName).classList.add('active');
 });

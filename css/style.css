@@ -303,7 +303,7 @@ main section {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   line-height: 1.2;
-  transform: translateY(-55%);
+  transform: translateY(-3rem);
 
   display: flex;
   flex-flow: row wrap;
@@ -313,7 +313,7 @@ main section {
 }
 
 .btn__operation.active {
-  transform: translateY(-2.2rem);
+  transform: translateY(-3.8rem);
   transition: all 0.6s;
 }
 
@@ -734,7 +734,7 @@ input {
   }
 
   .btn__operation.active {
-    transform: translateY(-3.2rem);
+    transform: translateY(-3.7rem);
   }
 
   .btn__operation {

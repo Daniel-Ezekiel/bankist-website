@@ -34,8 +34,9 @@ btnModalClose.addEventListener('click', e => {
 });
 
 // SMOOTH SCROLLING FUNCTIONALITY
-const scrollToSection = function (sectionName) {
-  const sCoords = sectionName.getBoundingClientRect();
+const scrollToSection = function (id) {
+  const section = document.querySelector(id);
+  const sCoords = section.getBoundingClientRect();
   const pgXOffset = window.scrollX;
   const pgYOffset = window.scrollY;
 
@@ -48,22 +49,33 @@ const scrollToSection = function (sectionName) {
   // console.log(window.pageXOffset, window.pageYOffset); -- pageXOffset, pageYOffset is deprecated
 };
 
-const navLinks = document.querySelectorAll('.navbar__link');
-navLinks.forEach(link =>
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    const linkText = e.target.textContent.toLowerCase();
-    console.log(linkText);
-    const section = document.querySelector(`#${linkText}`);
+// USING EVENT DELEGATION TO ACHIEVE NAVIGATION SMOOTH SCROLL
+mobileNav.addEventListener('click', function (e) {
+  e.preventDefault();
 
-    scrollToSection(section);
-  })
-);
+  if (e.target.classList.contains('navbar__link')) {
+    const sectionID = e.target.getAttribute('href');
+    scrollToSection(sectionID);
+  }
+});
+
+// NO EVENT DELEGATION IN THIS CASE
+// const navLinks = document.querySelectorAll('.navbar__link');
+// navLinks.forEach(link =>
+//   link.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const linkText = e.target.textContent.toLowerCase();
+//     console.log(linkText);
+//     const section = document.querySelector(`#${linkText}`);
+
+//     scrollToSection(section);
+//   })
+// );
 
 const btnLearnMore = document.querySelector('.btn__learn-more');
 btnLearnMore.addEventListener('click', function (e) {
   e.preventDefault();
-  const section = document.querySelector('#features');
+  const sectionID = this.getAttribute('href');
 
-  scrollToSection(section);
+  scrollToSection(sectionID);
 });

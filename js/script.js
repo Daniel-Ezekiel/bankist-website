@@ -1,9 +1,22 @@
 'use strict';
 
-// MOBILE NAVIGATION - HAMBURGER MENU
+// NAVIGATION ELEMENTS
 const hamburger = document.querySelector('.btn--hamburger');
 const mobileNav = document.querySelector('.header__nav');
+const navbar = document.querySelector('.navbar');
+// ACCOUNT MODAL ELEMENTS
+const btnOpenAcc = document.querySelectorAll('.btn--open-account');
+const overlay = document.querySelector('.overlay');
+const form = document.querySelector('.form--open-account');
+const btnModalClose = document.querySelector('.overlay--close');
+// LEARN MORE BUTTON
+const btnLearnMore = document.querySelector('.btn__learn-more');
+// TAB COMPONENT ELEMENTS
+const operationControls = document.querySelector('.operations__controls');
+const btnsOperation = operationControls.querySelectorAll('.btn__operation');
+const operationsDetails = document.querySelectorAll('.operation__details');
 
+// MOBILE NAVIGATION - HAMBURGER MENU
 hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
   mobileNav.classList.toggle('active');
@@ -13,11 +26,24 @@ mobileNav.addEventListener('click', function () {
   mobileNav.classList.remove('active');
 });
 
-// ACCOUNT MODAL ELEMENTS
-const btnOpenAcc = document.querySelectorAll('.btn--open-account');
-const overlay = document.querySelector('.overlay');
-const form = document.querySelector('.form--open-account');
-const btnModalClose = document.querySelector('.overlay--close');
+// ADDING SPECIAL HOVER EFFECT TO NAVBAR
+const animateNavbarHover = function (e) {
+  if (e.target.classList.contains('navbar__link')) {
+    const link = e.target;
+    const parent = link.closest('.navbar');
+    const siblings = parent.querySelectorAll('.navbar__link');
+    const logo = parent.querySelector('.header__logo');
+    siblings.forEach(sibling => {
+      if (sibling !== link) {
+        sibling.style.opacity = this;
+      }
+    });
+    logo.style.opacity = this;
+  }
+};
+// NAVBAR HOVER ANIMATED EFFECT
+navbar.addEventListener('mouseover', animateNavbarHover.bind(0.5));
+navbar.addEventListener('mouseout', animateNavbarHover.bind(1));
 
 // ACCOUNT MODAL POPUP
 btnOpenAcc.forEach(btn =>
@@ -59,6 +85,13 @@ mobileNav.addEventListener('click', function (e) {
   }
 });
 
+btnLearnMore.addEventListener('click', function (e) {
+  e.preventDefault();
+  const sectionID = this.getAttribute('href');
+
+  scrollToSection(sectionID);
+});
+
 // NO EVENT DELEGATION IN THIS CASE
 // const navLinks = document.querySelectorAll('.navbar__link');
 // navLinks.forEach(link =>
@@ -69,22 +102,10 @@ mobileNav.addEventListener('click', function (e) {
 //     const section = document.querySelector(`#${linkText}`);
 
 //     scrollToSection(section);
-//   })
 // );
-
-const btnLearnMore = document.querySelector('.btn__learn-more');
-btnLearnMore.addEventListener('click', function (e) {
-  e.preventDefault();
-  const sectionID = this.getAttribute('href');
-
-  scrollToSection(sectionID);
-});
+//   })
 
 // BUILDING A TABBED COMPONENT
-const operationControls = document.querySelector('.operations__controls');
-const btnsOperation = operationControls.querySelectorAll('.btn__operation');
-const operationsDetails = document.querySelectorAll('.operation__details');
-
 operationControls.addEventListener('click', function (e) {
   e.preventDefault();
   const clicked = e.target.closest('.btn__operation');
@@ -96,24 +117,3 @@ operationControls.addEventListener('click', function (e) {
   const currTabClassName = clicked.getAttribute('for');
   document.querySelector(currTabClassName).classList.add('active');
 });
-
-// ADDING SPECIAL HOVER EFFECT TO NAVBAR
-const animateNavbarHover = function (e) {
-  if (e.target.classList.contains('navbar__link')) {
-    const link = e.target;
-    const parent = link.closest('.navbar');
-    const siblings = parent.querySelectorAll('.navbar__link');
-    const logo = parent.querySelector('.header__logo');
-    siblings.forEach(sibling => {
-      if (sibling !== link) {
-        sibling.style.opacity = this;
-      }
-    });
-    logo.style.opacity = this;
-  }
-};
-
-const navbar = document.querySelector('.navbar');
-navbar.addEventListener('mouseover', animateNavbarHover.bind(0.5));
-
-navbar.addEventListener('mouseout', animateNavbarHover.bind(1));

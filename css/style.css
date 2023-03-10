@@ -44,6 +44,7 @@ header {
 .header__logo {
   width: 15rem;
   height: auto;
+  transition: all 0.6s;
 }
 
 /* MOBILE NAV */
@@ -79,15 +80,15 @@ header {
   color: var(--primary-text-color);
 }
 
+.navbar__link:link,
+.navbar__link:visited {
+  transition: all 0.6s;
+}
+
 .btn--open-account {
   padding: 1.5rem 1.8rem;
   border-radius: 3rem;
   background: var(--gradient-primary);
-}
-
-.navbar__link:hover,
-.btn--open-account:hover {
-  text-decoration: underline;
 }
 
 /* HAMBURGER BUTTON */

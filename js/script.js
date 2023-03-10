@@ -96,3 +96,24 @@ operationControls.addEventListener('click', function (e) {
   const currTabClassName = clicked.getAttribute('for');
   document.querySelector(currTabClassName).classList.add('active');
 });
+
+// ADDING SPECIAL HOVER EFFECT TO NAVBAR
+const animateNavbarHover = function (e) {
+  if (e.target.classList.contains('navbar__link')) {
+    const link = e.target;
+    const parent = link.closest('.navbar');
+    const siblings = parent.querySelectorAll('.navbar__link');
+    const logo = parent.querySelector('.header__logo');
+    siblings.forEach(sibling => {
+      if (sibling !== link) {
+        sibling.style.opacity = this;
+      }
+    });
+    logo.style.opacity = this;
+  }
+};
+
+const navbar = document.querySelector('.navbar');
+navbar.addEventListener('mouseover', animateNavbarHover.bind(0.5));
+
+navbar.addEventListener('mouseout', animateNavbarHover.bind(1));

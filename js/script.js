@@ -50,6 +50,7 @@ navbar.addEventListener('mouseout', animateNavbarHover.bind(1));
 
 // SMOOTH SCROLLING FUNCTIONALITY
 const scrollToSection = function (id) {
+  if (id === '#') return;
   const section = document.querySelector(id);
   const sCoords = section.getBoundingClientRect();
   const pgXOffset = window.scrollX;

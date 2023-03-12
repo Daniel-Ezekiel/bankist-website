@@ -1,9 +1,10 @@
 'use strict';
 
 // NAVIGATION ELEMENTS
+const header = document.querySelector('header');
+const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.btn--hamburger');
 const mobileNav = document.querySelector('.header__nav');
-const navbar = document.querySelector('.navbar');
 // ACCOUNT MODAL ELEMENTS
 const btnOpenAcc = document.querySelectorAll('.btn--open-account');
 const overlay = document.querySelector('.overlay');
@@ -11,6 +12,8 @@ const form = document.querySelector('.form--open-account');
 const btnModalClose = document.querySelector('.overlay--close');
 // LEARN MORE BUTTON
 const btnLearnMore = document.querySelector('.btn__learn-more');
+// SECTION ELEMENT
+const featuresSection = document.querySelector('#features');
 // TAB COMPONENT ELEMENTS
 const operationControls = document.querySelector('.operations__controls');
 const btnsOperation = operationControls.querySelectorAll('.btn__operation');
@@ -45,20 +48,6 @@ const animateNavbarHover = function (e) {
 navbar.addEventListener('mouseover', animateNavbarHover.bind(0.5));
 navbar.addEventListener('mouseout', animateNavbarHover.bind(1));
 
-// ACCOUNT MODAL POPUP
-btnOpenAcc.forEach(btn =>
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    overlay.classList.add('active');
-    form.classList.add('active');
-  })
-);
-btnModalClose.addEventListener('click', e => {
-  e.preventDefault();
-  overlay.classList.remove('active');
-  form.classList.remove('active');
-});
-
 // SMOOTH SCROLLING FUNCTIONALITY
 const scrollToSection = function (id) {
   const section = document.querySelector(id);
@@ -74,6 +63,18 @@ const scrollToSection = function (id) {
   // sectionName.scrollIntoView({ behavior: 'smooth' }); -- For modern browsers
   // console.log(window.pageXOffset, window.pageYOffset); -- pageXOffset, pageYOffset is deprecated
 };
+
+// STICKY ON SCROLL FEATURE
+window.addEventListener('scroll', function (e) {
+  const featSecCoords = featuresSection.getBoundingClientRect();
+  const pgXOffset = this.scrollX;
+  const pgYOffset = this.scrollY;
+  if (pgXOffset === 0 && pgYOffset >= featSecCoords.top + pgYOffset) {
+    navbar.classList.add('sticky');
+  } else {
+    navbar.classList.remove('sticky');
+  }
+});
 
 // USING EVENT DELEGATION TO ACHIEVE NAVIGATION SMOOTH SCROLL
 mobileNav.addEventListener('click', function (e) {
@@ -104,6 +105,20 @@ btnLearnMore.addEventListener('click', function (e) {
 //     scrollToSection(section);
 // );
 //   })
+
+// ACCOUNT MODAL POPUP
+btnOpenAcc.forEach(btn =>
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    overlay.classList.add('active');
+    form.classList.add('active');
+  })
+);
+btnModalClose.addEventListener('click', e => {
+  e.preventDefault();
+  overlay.classList.remove('active');
+  form.classList.remove('active');
+});
 
 // BUILDING A TABBED COMPONENT
 operationControls.addEventListener('click', function (e) {

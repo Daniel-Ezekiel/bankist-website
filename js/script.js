@@ -79,18 +79,21 @@ const scrollToSection = function (id) {
 // });
 
 // USING THE INTERSECTION OBSERVER API FOR STICKY ON SCROLL
-let options = {
-  root: document.documentElement,
-  rootMargin: '0px',
-  threshold: 1,
+const showNavbar = function (entries) {
+  entries.forEach(entry => {
+    const targetElement = entry.isIntersecting;
+    if (!targetElement) navbarContainer.classList.add('sticky');
+    else navbarContainer.classList.remove('sticky');
+  });
 };
 
-const showNavbar = () => {
-  navbarContainer.classList.add('sticky');
+let options = {
+  root: null,
+  threshold: 0,
 };
 
 let observer = new IntersectionObserver(showNavbar, options);
-observer.observe(section1);
+observer.observe(header);
 
 // USING EVENT DELEGATION TO ACHIEVE NAVIGATION SMOOTH SCROLL
 mobileNav.addEventListener('click', function (e) {

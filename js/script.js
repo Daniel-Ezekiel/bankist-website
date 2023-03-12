@@ -2,6 +2,7 @@
 
 // NAVIGATION ELEMENTS
 const header = document.querySelector('header');
+const navbarContainer = document.querySelector('.navbar--container');
 const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.btn--hamburger');
 const mobileNav = document.querySelector('.header__nav');
@@ -71,9 +72,9 @@ window.addEventListener('scroll', function (e) {
   const pgXOffset = this.scrollX;
   const pgYOffset = this.scrollY;
   if (pgXOffset === 0 && pgYOffset >= featSecCoords.top + pgYOffset) {
-    navbar.classList.add('sticky');
+    navbarContainer.classList.add('sticky');
   } else {
-    navbar.classList.remove('sticky');
+    navbarContainer.classList.remove('sticky');
   }
 });
 

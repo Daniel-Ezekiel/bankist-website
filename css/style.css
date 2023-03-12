@@ -30,6 +30,7 @@ body {
   font-weight: 500;
   color: var(--primary-text-color);
 }
+
 .navbar {
   padding: 2rem;
   display: flex;
@@ -40,13 +41,16 @@ body {
 
 .sticky {
   position: fixed;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.96);
 }
 
 .header__logo {
+  position: relative;
   width: 15rem;
   height: auto;
   transition: all 0.6s;
+  z-index: 2;
 }
 
 /* MOBILE NAV */
@@ -778,8 +782,13 @@ input {
     align-items: center;
   }
 
+  .navbar--container {
+    width: 100vw;
+  }
+
   .navbar {
-    width: 100%;
+    max-width: 128rem;
+    margin: auto;
     padding: 1.5rem;
   }
 
@@ -803,11 +812,5 @@ input {
 
   .feature {
     max-width: 125rem;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .navbar {
-    padding: 2rem 17rem;
   }
 }

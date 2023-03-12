@@ -14,7 +14,7 @@ const btnModalClose = document.querySelector('.overlay--close');
 // LEARN MORE BUTTON
 const btnLearnMore = document.querySelector('.btn__learn-more');
 // SECTION ELEMENT
-const featuresSection = document.querySelector('#features');
+const section1 = document.querySelector('#features');
 // TAB COMPONENT ELEMENTS
 const operationControls = document.querySelector('.operations__controls');
 const btnsOperation = operationControls.querySelectorAll('.btn__operation');
@@ -67,16 +67,30 @@ const scrollToSection = function (id) {
 };
 
 // STICKY ON SCROLL FEATURE
-window.addEventListener('scroll', function (e) {
-  const featSecCoords = featuresSection.getBoundingClientRect();
-  const pgXOffset = this.scrollX;
-  const pgYOffset = this.scrollY;
-  if (pgXOffset === 0 && pgYOffset >= featSecCoords.top + pgYOffset) {
-    navbarContainer.classList.add('sticky');
-  } else {
-    navbarContainer.classList.remove('sticky');
-  }
-});
+// window.addEventListener('scroll', function (e) {
+//   const sec1Coords = section1.getBoundingClientRect();
+//   const pgXOffset = this.scrollX;
+//   const pgYOffset = this.scrollY;
+//   if (pgXOffset === 0 && pgYOffset >= sec1Coords.top + pgYOffset) {
+//     navbarContainer.classList.add('sticky');
+//   } else {
+//     navbarContainer.classList.remove('sticky');
+//   }
+// });
+
+// USING THE INTERSECTION OBSERVER API FOR STICKY ON SCROLL
+let options = {
+  root: document.documentElement,
+  rootMargin: '0px',
+  threshold: 1,
+};
+
+const showNavbar = () => {
+  navbarContainer.classList.add('sticky');
+};
+
+let observer = new IntersectionObserver(showNavbar, options);
+observer.observe(section1);
 
 // USING EVENT DELEGATION TO ACHIEVE NAVIGATION SMOOTH SCROLL
 mobileNav.addEventListener('click', function (e) {

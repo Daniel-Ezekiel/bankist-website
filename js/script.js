@@ -13,7 +13,8 @@ const form = document.querySelector('.form--open-account');
 const btnModalClose = document.querySelector('.overlay--close');
 // LEARN MORE BUTTON
 const btnLearnMore = document.querySelector('.btn__learn-more');
-// SECTION ELEMENT
+// SECTION ELEMENTS
+const mainSections = document.querySelectorAll('main > .section');
 const section1 = document.querySelector('#features');
 // TAB COMPONENT ELEMENTS
 const operationControls = document.querySelector('.operations__controls');
@@ -123,6 +124,19 @@ btnLearnMore.addEventListener('click', function (e) {
 //     scrollToSection(section);
 // );
 //   })
+
+// FADE-IN EFFECT FOR ALL MAIN SECTIONS USING THE INTERSECTION OBSERVER API
+const sectionFadein = function (entries) {
+  const [entry] = entries;
+  if (entry.isIntersecting) entry.target.classList.add('fadein');
+};
+
+const sectionObserver = new IntersectionObserver(sectionFadein, {
+  root: null,
+  threshold: 0.3,
+});
+
+mainSections.forEach(section => sectionObserver.observe(section));
 
 // ACCOUNT MODAL POPUP
 btnOpenAcc.forEach(btn =>

@@ -21,6 +21,7 @@ const operationControls = document.querySelector('.operations__controls');
 const btnsOperation = operationControls.querySelectorAll('.btn__operation');
 const operationsDetails = document.querySelectorAll('.operation__details');
 
+/******************************************/
 // MOBILE NAVIGATION - HAMBURGER MENU
 hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
@@ -31,6 +32,7 @@ mobileNav.addEventListener('click', function () {
   mobileNav.classList.remove('active');
 });
 
+/******************************************/
 // ADDING SPECIAL HOVER EFFECT TO NAVBAR
 const animateNavbarHover = function (e) {
   if (e.target.classList.contains('navbar__link')) {
@@ -50,6 +52,7 @@ const animateNavbarHover = function (e) {
 navbar.addEventListener('mouseover', animateNavbarHover.bind(0.5));
 navbar.addEventListener('mouseout', animateNavbarHover.bind(1));
 
+/******************************************/
 // SMOOTH SCROLLING FUNCTIONALITY
 const scrollToSection = function (id) {
   if (id === '#') return;
@@ -66,34 +69,6 @@ const scrollToSection = function (id) {
   // sectionName.scrollIntoView({ behavior: 'smooth' }); -- For modern browsers
   // console.log(window.pageXOffset, window.pageYOffset); -- pageXOffset, pageYOffset is deprecated
 };
-
-// STICKY ON SCROLL FEATURE
-// window.addEventListener('scroll', function (e) {
-//   const sec1Coords = section1.getBoundingClientRect();
-//   const pgXOffset = this.scrollX;
-//   const pgYOffset = this.scrollY;
-//   if (pgXOffset === 0 && pgYOffset >= sec1Coords.top + pgYOffset) {
-//     navbarContainer.classList.add('sticky');
-//   } else {
-//     navbarContainer.classList.remove('sticky');
-//   }
-// });
-
-// USING THE INTERSECTION OBSERVER API FOR STICKY ON SCROLL
-const showStickyNav = function (entries) {
-  const [entry] = entries;
-
-  const targetElement = entry.isIntersecting;
-  if (targetElement) navbarContainer.classList.remove('sticky');
-  else navbarContainer.classList.add('sticky');
-};
-
-let headerObserver = new IntersectionObserver(showStickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: '-91px',
-});
-headerObserver.observe(header);
 
 // USING EVENT DELEGATION TO ACHIEVE NAVIGATION SMOOTH SCROLL
 mobileNav.addEventListener('click', function (e) {
@@ -125,6 +100,37 @@ btnLearnMore.addEventListener('click', function (e) {
 // );
 //   })
 
+/*******************************************/
+// STICKY ON SCROLL FEATURE
+// window.addEventListener('scroll', function (e) {
+//   const sec1Coords = section1.getBoundingClientRect();
+//   const pgXOffset = this.scrollX;
+//   const pgYOffset = this.scrollY;
+//   if (pgXOffset === 0 && pgYOffset >= sec1Coords.top + pgYOffset) {
+//     navbarContainer.classList.add('sticky');
+//   } else {
+//     navbarContainer.classList.remove('sticky');
+//   }
+// });
+
+/************************************************/
+// USING THE INTERSECTION OBSERVER API FOR STICKY ON SCROLL
+const showStickyNav = function (entries) {
+  const [entry] = entries;
+
+  const targetElement = entry.isIntersecting;
+  if (targetElement) navbarContainer.classList.remove('sticky');
+  else navbarContainer.classList.add('sticky');
+};
+
+let headerObserver = new IntersectionObserver(showStickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: '-91px',
+});
+headerObserver.observe(header);
+
+/*************************************************/
 // FADE-IN EFFECT FOR ALL MAIN SECTIONS USING THE INTERSECTION OBSERVER API
 const sectionFadein = function (entries) {
   const [entry] = entries;
@@ -138,6 +144,21 @@ const sectionObserver = new IntersectionObserver(sectionFadein, {
 
 mainSections.forEach(section => sectionObserver.observe(section));
 
+/***************************************/
+// BUILDING A TABBED COMPONENT
+operationControls.addEventListener('click', function (e) {
+  e.preventDefault();
+  const clicked = e.target.closest('.btn__operation');
+  // console.log(clicked);
+  btnsOperation.forEach(btn => btn.classList.remove('active'));
+  clicked.classList.add('active');
+
+  operationsDetails.forEach(detail => detail.classList.remove('active'));
+  const currTabClassName = clicked.getAttribute('for');
+  document.querySelector(currTabClassName).classList.add('active');
+});
+
+/**************************************************/
 // ACCOUNT MODAL POPUP
 btnOpenAcc.forEach(btn =>
   btn.addEventListener('click', e => {
@@ -150,17 +171,4 @@ btnModalClose.addEventListener('click', e => {
   e.preventDefault();
   overlay.classList.remove('active');
   form.classList.remove('active');
-});
-
-// BUILDING A TABBED COMPONENT
-operationControls.addEventListener('click', function (e) {
-  e.preventDefault();
-  const clicked = e.target.closest('.btn__operation');
-  // console.log(clicked);
-  btnsOperation.forEach(btn => btn.classList.remove('active'));
-  clicked.classList.add('active');
-
-  operationsDetails.forEach(detail => detail.classList.remove('active'));
-  const currTabClassName = clicked.getAttribute('for');
-  document.querySelector(currTabClassName).classList.add('active');
 });

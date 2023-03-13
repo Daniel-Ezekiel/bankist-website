@@ -132,9 +132,12 @@ headerObserver.observe(header);
 
 /*************************************************/
 // FADE-IN EFFECT FOR ALL MAIN SECTIONS USING THE INTERSECTION OBSERVER API
-const sectionFadein = function (entries) {
+const sectionFadein = function (entries, observer) {
   const [entry] = entries;
-  if (entry.isIntersecting) entry.target.classList.add('fadein');
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.add('fadein');
+  observer.unobserve(entry.target);
 };
 
 const sectionObserver = new IntersectionObserver(sectionFadein, {
@@ -142,7 +145,39 @@ const sectionObserver = new IntersectionObserver(sectionFadein, {
   threshold: 0.3,
 });
 
-mainSections.forEach(section => sectionObserver.observe(section));
+mainSections.forEach(section => {
+  section.classList.add('fadeout');
+  sectionObserver.observe(section);
+});
+
+// LAZY LOADING IMAGES USING INTERSECTION API
+const imgSelectn = document.querySelectorAll('img[data-src]');
+console.log(imgSelectn);
+
+const lazyLoadImg = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener(
+    'load',
+    entry.target.classList.remove('lazy--load')
+  );
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(lazyLoadImg, {
+  root: null,
+  threshold: 0,
+});
+
+imgSelectn.forEach(img => {
+  img.src = img.dataset.lazy;
+  img.classList.add('lazy--load');
+
+  imgObserver.observe(img);
+});
 
 /***************************************/
 // BUILDING A TABBED COMPONENT

@@ -232,15 +232,12 @@ main section {
   border-top: 0.1rem solid #ddd;
 }
 
-.section {
+.fadeout {
   opacity: 0;
   transform: translateY(5rem);
 }
 
-/* .loaded {
-} */
-
-.section.fadein {
+.fadein {
   opacity: 1;
   transform: none;
   transition: all 0.6s;
@@ -267,6 +264,10 @@ main section {
 .feature__image {
   border-radius: 1.8rem;
   width: 100%;
+}
+
+.lazy--load {
+  filter: blur(0.5rem);
 }
 
 .feature__details {
@@ -726,21 +727,29 @@ input {
   }
 
   .feature {
-    max-width: 100%;
+    max-width: 95%;
     margin: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 4rem;
+    gap: 2.5rem;
   }
 
   .section__intro {
     width: 70rem;
   }
 
-  .section .feature > div {
+  /* .section .feature > div {
     max-width: 50%;
+  } */
+
+  .feature__img-control {
+    width: 47%;
+  }
+
+  .feature__details {
+    width: 47%;
   }
 
   .feature__img {

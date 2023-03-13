@@ -14,7 +14,7 @@ const btnModalClose = document.querySelector('.overlay--close');
 // LEARN MORE BUTTON
 const btnLearnMore = document.querySelector('.btn__learn-more');
 // SECTION ELEMENTS
-const mainSections = document.querySelectorAll('main > .section');
+const mainSections = document.querySelectorAll('.section');
 const section1 = document.querySelector('#features');
 // TAB COMPONENT ELEMENTS
 const operationControls = document.querySelector('.operations__controls');

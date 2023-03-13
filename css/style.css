@@ -232,7 +232,7 @@ main section {
   border-top: 0.1rem solid #ddd;
 }
 
-main > .section {
+.section {
   opacity: 0;
   transform: translateY(5rem);
 }

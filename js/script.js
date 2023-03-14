@@ -199,6 +199,8 @@ operationControls.addEventListener('click', function (e) {
 let slideOffset = 0;
 const carousel = document.querySelector('.carousel');
 const allSlides = document.querySelectorAll('.slide');
+const btnRight = document.querySelector('#btn__right');
+const btnLeft = document.querySelector('#btn__left');
 const btnPagination = document.querySelectorAll('.btn--pagination');
 
 const calcCurrentSlide = function (offset, slides, pagination) {
@@ -212,19 +214,24 @@ const calcCurrentSlide = function (offset, slides, pagination) {
   });
 };
 
-carousel.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.btn__slider');
-  // console.log(clicked);
+function showNextSlide() {
+  slideOffset < allSlides.length - 1 ? slideOffset++ : (slideOffset = 0);
+  calcCurrentSlide(slideOffset, allSlides, btnPagination);
+}
+function showPrevSlide() {
+  slideOffset <= 0 ? (slideOffset = allSlides.length - 1) : slideOffset--;
+  calcCurrentSlide(slideOffset, allSlides, btnPagination);
+}
 
-  if (!clicked) return;
+btnRight.addEventListener('click', showNextSlide);
+btnLeft.addEventListener('click', showPrevSlide);
 
-  if (clicked.getAttribute('id') === 'btn__right') {
-    slideOffset < 2 ? slideOffset++ : (slideOffset = 0);
-    calcCurrentSlide(slideOffset, allSlides, btnPagination);
-  } else {
-    slideOffset <= 0 ? (slideOffset = 2) : slideOffset--;
-    calcCurrentSlide(slideOffset, allSlides, btnPagination);
-  }
+//  CAROUSEL WORKING ON KEY PRESS
+document.addEventListener('keydown', function (e) {
+  e.key === 'ArrowRight' && showNextSlide();
+});
+document.addEventListener('keydown', function (e) {
+  e.key === 'ArrowLeft' && showPrevSlide();
 });
 
 // CAROUSEL WORKING FROM THE PAGINATION BUTTONS

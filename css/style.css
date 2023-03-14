@@ -409,6 +409,7 @@ main section {
 
 .slide {
   min-width: 100%;
+  transition: transform 0.8s;
 }
 
 .testimonial {
@@ -502,10 +503,12 @@ main section {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
+  transition: background-color 0.8s;
 }
 
 .btn--pagination.active {
   background-color: #666;
+  transition: background-color 0.8s;
 }
 
 /* SECTION 4 - CTA */

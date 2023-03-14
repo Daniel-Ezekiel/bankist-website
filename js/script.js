@@ -146,13 +146,13 @@ const sectionObserver = new IntersectionObserver(sectionFadein, {
 });
 
 mainSections.forEach(section => {
-  section.classList.add('fadeout');
+  // section.classList.add('fadeout');
   sectionObserver.observe(section);
 });
 
+/*****************************************/
 // LAZY LOADING IMAGES USING INTERSECTION API
 const imgSelectn = document.querySelectorAll('img[data-src]');
-console.log(imgSelectn);
 
 const lazyLoadImg = function (entries, observer) {
   const [entry] = entries;
@@ -192,6 +192,43 @@ operationControls.addEventListener('click', function (e) {
   operationsDetails.forEach(detail => detail.classList.remove('active'));
   const currTabClassName = clicked.getAttribute('for');
   document.querySelector(currTabClassName).classList.add('active');
+});
+
+/***********************************************/
+// TESTIMONIAL CAROUSEL
+let slideOffset = 0;
+const carousel = document.querySelector('.carousel');
+const allSlides = document.querySelectorAll('.slide');
+const btnPagination = document.querySelectorAll('.btn--pagination');
+
+// const showNextSlide = function (offset, slides, pagination) {};
+
+carousel.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.btn__slider');
+  console.log(clicked);
+
+  if (clicked.getAttribute('id') === 'btn__right') {
+    slideOffset < 2 ? slideOffset++ : (slideOffset = 0);
+
+    allSlides.forEach(slide => {
+      slide.style.transform = `translateX(-${slideOffset * 100}%)`;
+    });
+
+    btnPagination.forEach((btn, i) => {
+      btn.classList.remove('active');
+      slideOffset === i && btn.classList.add('active');
+    });
+  } else {
+    slideOffset <= 0 ? (slideOffset = 2) : slideOffset--;
+    allSlides.forEach(slide => {
+      slide.style.transform = `translateX(-${slideOffset * 100}%)`;
+    });
+
+    btnPagination.forEach((btn, i) => {
+      btn.classList.remove('active');
+      slideOffset === i && btn.classList.add('active');
+    });
+  }
 });
 
 /**************************************************/

@@ -475,6 +475,7 @@ main section {
   height: 3rem;
   border: none;
   background-color: #fff;
+  cursor: pointer;
 
   font-size: 2rem;
 }

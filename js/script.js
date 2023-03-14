@@ -201,7 +201,16 @@ const carousel = document.querySelector('.carousel');
 const allSlides = document.querySelectorAll('.slide');
 const btnPagination = document.querySelectorAll('.btn--pagination');
 
-// const showNextSlide = function (offset, slides, pagination) {};
+const calcCurrentSlide = function (offset, slides, pagination) {
+  slides.forEach(slide => {
+    slide.style.transform = `translateX(-${offset * 100}%)`;
+  });
+
+  pagination.forEach((btn, i) => {
+    btn.classList.remove('active');
+    offset === i && btn.classList.add('active');
+  });
+};
 
 carousel.addEventListener('click', function (e) {
   const clicked = e.target.closest('.btn__slider');
@@ -209,25 +218,10 @@ carousel.addEventListener('click', function (e) {
 
   if (clicked.getAttribute('id') === 'btn__right') {
     slideOffset < 2 ? slideOffset++ : (slideOffset = 0);
-
-    allSlides.forEach(slide => {
-      slide.style.transform = `translateX(-${slideOffset * 100}%)`;
-    });
-
-    btnPagination.forEach((btn, i) => {
-      btn.classList.remove('active');
-      slideOffset === i && btn.classList.add('active');
-    });
+    calcCurrentSlide(slideOffset, allSlides, btnPagination);
   } else {
     slideOffset <= 0 ? (slideOffset = 2) : slideOffset--;
-    allSlides.forEach(slide => {
-      slide.style.transform = `translateX(-${slideOffset * 100}%)`;
-    });
-
-    btnPagination.forEach((btn, i) => {
-      btn.classList.remove('active');
-      slideOffset === i && btn.classList.add('active');
-    });
+    calcCurrentSlide(slideOffset, allSlides, btnPagination);
   }
 });
 

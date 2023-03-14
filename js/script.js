@@ -196,51 +196,53 @@ operationControls.addEventListener('click', function (e) {
 
 /***********************************************/
 // TESTIMONIAL CAROUSEL
-let slideOffset = 0;
-const carousel = document.querySelector('.carousel');
-const allSlides = document.querySelectorAll('.slide');
-const btnRight = document.querySelector('#btn__right');
-const btnLeft = document.querySelector('#btn__left');
-const btnPagination = document.querySelectorAll('.btn--pagination');
+const carousel = function () {
+  let slideOffset = 0;
+  const carousel = document.querySelector('.carousel');
+  const allSlides = document.querySelectorAll('.slide');
+  const btnRight = document.querySelector('#btn__right');
+  const btnLeft = document.querySelector('#btn__left');
+  const btnPagination = document.querySelectorAll('.btn--pagination');
 
-const calcCurrentSlide = function (offset, slides, pagination) {
-  slides.forEach(slide => {
-    slide.style.transform = `translateX(-${offset * 100}%)`;
+  const calcCurrentSlide = function (offset, slides, pagination) {
+    slides.forEach(slide => {
+      slide.style.transform = `translateX(-${offset * 100}%)`;
+    });
+
+    pagination.forEach((btn, i) => {
+      btn.classList.remove('active');
+      offset === i && btn.classList.add('active');
+    });
+  };
+
+  function showNextSlide() {
+    slideOffset < allSlides.length - 1 ? slideOffset++ : (slideOffset = 0);
+    calcCurrentSlide(slideOffset, allSlides, btnPagination);
+  }
+  function showPrevSlide() {
+    slideOffset <= 0 ? (slideOffset = allSlides.length - 1) : slideOffset--;
+    calcCurrentSlide(slideOffset, allSlides, btnPagination);
+  }
+
+  btnRight.addEventListener('click', showNextSlide);
+  btnLeft.addEventListener('click', showPrevSlide);
+
+  //  CAROUSEL WORKING ON KEY PRESS
+  document.addEventListener('keydown', function (e) {
+    e.key === 'ArrowRight' && showNextSlide();
+  });
+  document.addEventListener('keydown', function (e) {
+    e.key === 'ArrowLeft' && showPrevSlide();
   });
 
-  pagination.forEach((btn, i) => {
-    btn.classList.remove('active');
-    offset === i && btn.classList.add('active');
+  // CAROUSEL WORKING FROM THE PAGINATION BUTTONS
+  carousel.addEventListener('click', function (e) {
+    const clicked = e.target.closest('.btn--pagination');
+
+    if (!clicked) return;
+    calcCurrentSlide(+clicked.dataset.no, allSlides, btnPagination);
   });
 };
-
-function showNextSlide() {
-  slideOffset < allSlides.length - 1 ? slideOffset++ : (slideOffset = 0);
-  calcCurrentSlide(slideOffset, allSlides, btnPagination);
-}
-function showPrevSlide() {
-  slideOffset <= 0 ? (slideOffset = allSlides.length - 1) : slideOffset--;
-  calcCurrentSlide(slideOffset, allSlides, btnPagination);
-}
-
-btnRight.addEventListener('click', showNextSlide);
-btnLeft.addEventListener('click', showPrevSlide);
-
-//  CAROUSEL WORKING ON KEY PRESS
-document.addEventListener('keydown', function (e) {
-  e.key === 'ArrowRight' && showNextSlide();
-});
-document.addEventListener('keydown', function (e) {
-  e.key === 'ArrowLeft' && showPrevSlide();
-});
-
-// CAROUSEL WORKING FROM THE PAGINATION BUTTONS
-carousel.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.btn--pagination');
-
-  if (!clicked) return;
-  calcCurrentSlide(+clicked.dataset.no, allSlides, btnPagination);
-});
 
 /**************************************************/
 // ACCOUNT MODAL POPUP

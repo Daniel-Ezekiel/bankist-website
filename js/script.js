@@ -243,6 +243,7 @@ const carousel = function () {
     calcCurrentSlide(+clicked.dataset.no, allSlides, btnPagination);
   });
 };
+carousel();
 
 /**************************************************/
 // ACCOUNT MODAL POPUP

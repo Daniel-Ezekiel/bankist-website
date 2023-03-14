@@ -146,7 +146,7 @@ const sectionObserver = new IntersectionObserver(sectionFadein, {
 });
 
 mainSections.forEach(section => {
-  // section.classList.add('fadeout');
+  section.classList.add('fadeout');
   sectionObserver.observe(section);
 });
 

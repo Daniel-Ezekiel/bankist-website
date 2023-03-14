@@ -498,12 +498,13 @@ main section {
 }
 
 .btn--pagination {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   background-color: #aaa;
   border: none;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.8rem;
+  height: 0.8rem;
   border-radius: 50%;
+  cursor: pointer;
   transition: background-color 0.8s;
 }
 

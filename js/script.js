@@ -214,7 +214,9 @@ const calcCurrentSlide = function (offset, slides, pagination) {
 
 carousel.addEventListener('click', function (e) {
   const clicked = e.target.closest('.btn__slider');
-  console.log(clicked);
+  // console.log(clicked);
+
+  if (!clicked) return;
 
   if (clicked.getAttribute('id') === 'btn__right') {
     slideOffset < 2 ? slideOffset++ : (slideOffset = 0);
@@ -223,6 +225,14 @@ carousel.addEventListener('click', function (e) {
     slideOffset <= 0 ? (slideOffset = 2) : slideOffset--;
     calcCurrentSlide(slideOffset, allSlides, btnPagination);
   }
+});
+
+// CAROUSEL WORKING FROM THE PAGINATION BUTTONS
+carousel.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.btn--pagination');
+
+  if (!clicked) return;
+  calcCurrentSlide(+clicked.dataset.no, allSlides, btnPagination);
 });
 
 /**************************************************/
